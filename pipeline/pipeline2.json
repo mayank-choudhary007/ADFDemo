@@ -1,0 +1,33 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set FileName",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "vFileName",
+					"value": {
+						"value": "@replace(pipeline().parameters.FileName, '.csv', \nconcat(string(formatDateTime('yyyy-MM-dd', utcnow())),'.csv'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"FileName": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"vFileName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-07T09:50:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

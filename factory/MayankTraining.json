@@ -1,0 +1,9 @@
+{
+	"name": "MayankTraining",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "04ef260b-04d7-4bc2-9cfc-58b2a19e2d39",
+		"tenantId": "17d243fa-6e98-47cf-b248-ee6782e2cda8"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "LSSqlServer",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=DESKTOP-UOC81NQ;initial catalog=AdventureWorks2014",
+			"userName": "DESKTOP-UOC81NQ\\Mayank-PC",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyY2QzZDc5Yi1lMzg4LTRiMzYtOTFhZC0zNmQyNzNjOTgwNzAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IR-SelfHosted",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
