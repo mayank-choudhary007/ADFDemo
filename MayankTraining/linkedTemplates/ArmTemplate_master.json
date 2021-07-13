@@ -1,0 +1,105 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "MayankTraining"
+		},
+		"LSSqlServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LSSqlServer'"
+		},
+		"LSSqlServer_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSSqlServer'"
+		},
+		"ls_CosmosDbMongoDb_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_CosmosDbMongoDb'"
+		},
+		"ls_csv_data_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_csv_data'"
+		},
+		"LSSqlServer_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "DESKTOP-UOC81NQ\\Mayank-PC"
+		},
+		"ls_CosmosDbMongoDb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "cosmosdb"
+		},
+		"eventtrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/730687e4-0d77-4c55-b101-7eb7996f2cd2/resourceGroups/RG_Azure_Training/providers/Microsoft.Storage/storageAccounts/satrainingazure"
+		},
+		"fileAdded_properties_pipeline2_parameters_FileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"fileAdded_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/730687e4-0d77-4c55-b101-7eb7996f2cd2/resourceGroups/RG_Azure_Training/providers/Microsoft.Storage/storageAccounts/satrainingazure"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "MayankTraining_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_CosmosDbMongoDb_connectionString": {
+						"value": "[parameters('ls_CosmosDbMongoDb_connectionString')]"
+					},
+					"ls_csv_data_connectionString": {
+						"value": "[parameters('ls_csv_data_connectionString')]"
+					},
+					"LSSqlServer_connectionString": {
+						"value": "[parameters('LSSqlServer_connectionString')]"
+					},
+					"LSSqlServer_password": {
+						"value": "[parameters('LSSqlServer_password')]"
+					},
+					"ls_CosmosDbMongoDb_properties_typeProperties_database": {
+						"value": "[parameters('ls_CosmosDbMongoDb_properties_typeProperties_database')]"
+					},
+					"LSSqlServer_properties_typeProperties_userName": {
+						"value": "[parameters('LSSqlServer_properties_typeProperties_userName')]"
+					},
+					"fileAdded_properties_pipeline2_parameters_FileName": {
+						"value": "[parameters('fileAdded_properties_pipeline2_parameters_FileName')]"
+					},
+					"fileAdded_properties_typeProperties_scope": {
+						"value": "[parameters('fileAdded_properties_typeProperties_scope')]"
+					},
+					"eventtrigger_properties_typeProperties_scope": {
+						"value": "[parameters('eventtrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
